@@ -79,7 +79,7 @@ export default function Admin() {
           </div>
           <div style={{ background:'#111118', border:'1px solid rgba(255,255,255,0.07)', borderRadius:14, padding:'18px 20px' }}>
             <h3 style={{ margin:'0 0 14px', fontSize:15, fontWeight:700, color:'#f1f5f9' }}>Distribución de planes</h3>
-            <div style={{ display:'flex', gap:20' }}>
+            <div style={{ display:'flex', gap:20 }}>
               {[['Free', stats.byPlan.free,'#6b7280'],['PRO', stats.byPlan.pro,'#9333ea'],['Creator', stats.byPlan.creator,'#ec4899']].map(([p,v,c]) => (
                 <div key={p} style={{ textAlign:'center' }}>
                   <p style={{ margin:0, fontSize:22, fontWeight:900, color:c }}>{v}</p>
