@@ -20,6 +20,11 @@ export async function seedDemoData() {
   // Evitar re-seed si ya existe
   if (users.has('demo-1')) return;
 
+  // Set admin password
+  const adminHash = await bcrypt.hash('Drop2024!admin', 10);
+  const admin = users.get('admin-1');
+  if (admin) admin.passwordHash = adminHash;
+
   const hash = await bcrypt.hash('demo1234', 10);
 
   for (const u of DEMO_USERS) {
