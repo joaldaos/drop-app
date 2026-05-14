@@ -2,10 +2,10 @@ import { users, events, createEvent, trackStats, registerPlay, cityStats } from 
 import bcrypt from 'bcryptjs';
 
 const OSCAR_NELL_TRACKS = [
-  { id: 'on-nina',    name: 'La Niña',        albumArt: null, spotifyUrl: 'https://open.spotify.com/track/45kLbBJcXZhM1dCRaGthKf' },
-  { id: 'on-enamo',  name: 'Enamorao',         albumArt: null, spotifyUrl: 'https://open.spotify.com/track/3e4aXIKjkx2mfPS4gAVkJj' },
-  { id: 'on-quiza',  name: 'Quizá no sé amar', albumArt: null, spotifyUrl: 'https://open.spotify.com/track/65eP4VwsB5Rh182140nabX' },
-  { id: 'on-carme',  name: 'Carmesí',          albumArt: null, spotifyUrl: 'https://open.spotify.com/track/40JRZSn2QDjn59meFXn1Op' },
+  { id: 'on-nina',   name: 'La Niña',          albumArt: 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02499f0ccaf4930a92e88b2eac', spotifyUrl: 'https://open.spotify.com/track/45kLbBJcXZhM1dCRaGthKf' },
+  { id: 'on-enamo',  name: 'Enamorao',         albumArt: 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b8ccdb9e6d985694a0aacb6a', spotifyUrl: 'https://open.spotify.com/track/3e4aXIKjkx2mfPS4gAVkJj' },
+  { id: 'on-quiza',  name: 'Quizá no sé amar', albumArt: 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029ff53099f80b4c35bd717414', spotifyUrl: 'https://open.spotify.com/track/65eP4VwsB5Rh182140nabX' },
+  { id: 'on-carme',  name: 'Carmesí',          albumArt: 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024c2cfe0786e8e03c11cb7df1', spotifyUrl: 'https://open.spotify.com/track/40JRZSn2QDjn59meFXn1Op' },
 ];
 
 const DEMO_USERS = [
