@@ -6,6 +6,7 @@ import { existsSync } from 'fs';
 import dotenv from 'dotenv';
 dotenv.config();
 
+import { seedDemoData }   from './store/seed.js';
 import { authRouter }     from './routes/auth.js';
 import { feedRouter }     from './routes/feed.js';
 import { spotifyRouter }  from './routes/spotify.js';
@@ -59,7 +60,8 @@ if (existsSync(distPath)) {
   }
 }
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  await seedDemoData();
   console.log(`\n🎵 DROP API  →  http://localhost:${PORT}/api/health`);
   console.log(`   Spotify OAuth: ${process.env.SPOTIFY_CLIENT_ID ? '✓ configured' : '⚠ SPOTIFY_CLIENT_ID missing'}\n`);
 });
