@@ -2,10 +2,10 @@ import { users, events, createEvent, trackStats, registerPlay, cityStats } from 
 import bcrypt from 'bcryptjs';
 
 const OSCAR_NELL_TRACKS = [
-  { id: 'on-nina',    name: 'La Niña',        albumArt: null, spotifyUrl: null },
-  { id: 'on-enamo',  name: 'Enamorao',        albumArt: null, spotifyUrl: null },
-  { id: 'on-quiza',  name: 'Quizá no sé amar', albumArt: null, spotifyUrl: null },
-  { id: 'on-carme',  name: 'Carmesí',         albumArt: null, spotifyUrl: null },
+  { id: 'on-nina',    name: 'La Niña',        albumArt: null, spotifyUrl: 'https://open.spotify.com/track/45kLbBJcXZhM1dCRaGthKf' },
+  { id: 'on-enamo',  name: 'Enamorao',         albumArt: null, spotifyUrl: 'https://open.spotify.com/track/3e4aXIKjkx2mfPS4gAVkJj' },
+  { id: 'on-quiza',  name: 'Quizá no sé amar', albumArt: null, spotifyUrl: 'https://open.spotify.com/track/65eP4VwsB5Rh182140nabX' },
+  { id: 'on-carme',  name: 'Carmesí',          albumArt: null, spotifyUrl: 'https://open.spotify.com/track/40JRZSn2QDjn59meFXn1Op' },
 ];
 
 const DEMO_USERS = [
