@@ -62,25 +62,24 @@ export default function FeedCard({ event, onAuthRequired }) {
       onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(147,51,234,0.3)'}
       onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'}
     >
-      {/* Album art banner */}
-      <div style={{
-        height: 160, position: 'relative', overflow: 'hidden',
-        background: event.albumArt
-          ? `url(${artUrl(event.albumArt)}) center/cover`
-          : 'linear-gradient(135deg, #1a0a2e, #0d0d18)',
-        display: 'flex', alignItems: 'flex-end',
-      }}>
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, transparent 30%, rgba(10,10,15,0.9))' }} />
-        {event.viralScore > 0.3 && (
-          <div style={{
-            position:'absolute', top:12, right:12,
-            background:'rgba(239,68,68,0.9)', backdropFilter:'blur(8px)',
-            color:'#fff', fontSize:11, fontWeight:800, padding:'4px 10px', borderRadius:20,
-          }}>🔥 Viral</div>
-        )}
-        <div style={{ position:'relative', padding:'12px 16px', width:'100%' }}>
-          <p style={{ margin:0, fontSize:18, fontWeight:800, color:'#f1f5f9', textShadow:'0 2px 8px rgba(0,0,0,0.8)' }}>{event.trackName}</p>
-          <p style={{ margin:'2px 0 0', fontSize:13, color:'rgba(255,255,255,0.7)' }}>{event.artistName}</p>
+      {/* Track info row */}
+      <div style={{ display:'flex', alignItems:'center', gap:14, padding:'14px 16px 0' }}>
+        {event.albumArt
+          ? <img src={artUrl(event.albumArt)} alt={event.trackName}
+              style={{ width:64, height:64, borderRadius:10, objectFit:'cover', flexShrink:0 }} />
+          : <div style={{ width:64, height:64, borderRadius:10, flexShrink:0,
+              background:'linear-gradient(135deg,#1a0a2e,#0d0d18)',
+              display:'flex', alignItems:'center', justifyContent:'center', fontSize:28 }}>🎵</div>
+        }
+        <div style={{ flex:1, minWidth:0 }}>
+          {event.viralScore > 0.3 && (
+            <span style={{
+              background:'rgba(239,68,68,0.9)', color:'#fff',
+              fontSize:10, fontWeight:800, padding:'2px 8px', borderRadius:20, marginBottom:4, display:'inline-block',
+            }}>🔥 Viral</span>
+          )}
+          <p style={{ margin:0, fontSize:16, fontWeight:800, color:'#f1f5f9', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>{event.trackName}</p>
+          <p style={{ margin:'2px 0 0', fontSize:13, color:'rgba(255,255,255,0.55)' }}>{event.artistName}</p>
         </div>
       </div>
 
