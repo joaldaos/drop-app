@@ -55,7 +55,7 @@ if (existsSync(distPath)) {
     app.use(sirv(distPath, { single: true }));
   } else {
     app.use(express.static(distPath));
-    app.get('*', (_, res) => res.sendFile(join(distPath, 'index.html')));
+    app.use((_, res) => res.sendFile(join(distPath, 'index.html')));
   }
 }
 
