@@ -44,12 +44,20 @@ export function createEvent(data) {
     likes: 0,
     shares: 0,
     likedBy: new Set(),
-    // analytics
     recentInteractions: 0,
-    interactionLog: [],       // [{t: timestamp}] — last 60 min
+    interactionLog: [],
     viralScore: 0,
   };
   events.set(id, event);
+
+  // Auto-fetch album art if missing but Spotify URL is present
+  if (!event.albumArt && event.spotifyUrl) {
+    fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(event.spotifyUrl)}`)
+      .then(r => r.json())
+      .then(d => { if (d.thumbnail_url) event.albumArt = d.thumbnail_url; })
+      .catch(() => {});
+  }
+
   return event;
 }
 
