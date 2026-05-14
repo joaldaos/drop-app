@@ -11,6 +11,13 @@ function timeAgo(ts) {
   return `${Math.floor(diff/86400000)}d`;
 }
 
+const API = (import.meta.env.VITE_API_URL || '');
+function artUrl(url) {
+  if (!url) return null;
+  if (url.includes('spotifycdn.com')) return `${API}/api/imgproxy?url=${encodeURIComponent(url)}`;
+  return url;
+}
+
 export default function FeedCard({ event, onAuthRequired }) {
   const { user } = useAuth();
   const [likes,   setLikes]   = useState(event.likes);
@@ -59,7 +66,7 @@ export default function FeedCard({ event, onAuthRequired }) {
       <div style={{
         height: 160, position: 'relative', overflow: 'hidden',
         background: event.albumArt
-          ? `url(${event.albumArt}) center/cover`
+          ? `url(${artUrl(event.albumArt)}) center/cover`
           : 'linear-gradient(135deg, #1a0a2e, #0d0d18)',
         display: 'flex', alignItems: 'flex-end',
       }}>

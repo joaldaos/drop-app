@@ -48,6 +48,20 @@ app.use('/s',            shareRouter);   // viral share previews
 // ── Health check ──────────────────────────────────────────────────────────
 app.get('/api/health', (_, res) => res.json({ ok: true, version: '1.0.0', env: process.env.NODE_ENV }));
 
+// ── Image proxy (Spotify CDN) ─────────────────────────────────────────────
+app.get('/api/imgproxy', async (req, res) => {
+  const url = req.query.url;
+  if (!url || !/(spotifycdn\.com|scdn\.co)/.test(url)) return res.status(400).end();
+  try {
+    const r = await fetch(url, { headers: { Referer: 'https://open.spotify.com' } });
+    if (!r.ok) return res.status(r.status).end();
+    res.set('Content-Type', r.headers.get('content-type') || 'image/jpeg');
+    res.set('Cache-Control', 'public, max-age=86400');
+    const buf = await r.arrayBuffer();
+    res.send(Buffer.from(buf));
+  } catch { res.status(500).end(); }
+});
+
 // ── Serve Vite build in production ────────────────────────────────────────
 const distPath = join(__dirname, '../dist');
 if (existsSync(distPath)) {
