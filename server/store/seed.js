@@ -2,54 +2,10 @@ import { users, events, createEvent, trackStats, registerPlay, cityStats } from 
 import bcrypt from 'bcryptjs';
 
 const OSCAR_NELL_TRACKS = [
-  {
-    id: 'on-deixar',
-    name: 'Deixar de voler-te',
-    albumArt: 'https://i.scdn.co/image/ab67616d0000b273e8107e6d9214baa81bb79bba',
-    spotifyUrl: 'https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC',
-  },
-  {
-    id: 'on-lluna',
-    name: 'La Lluna',
-    albumArt: 'https://i.scdn.co/image/ab67616d0000b273e8107e6d9214baa81bb79bba',
-    spotifyUrl: 'https://open.spotify.com/artist/2hazSY4Ef3aB9ATXW7J5w0',
-  },
-  {
-    id: 'on-temps',
-    name: 'Temps',
-    albumArt: 'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e14',
-    spotifyUrl: 'https://open.spotify.com/artist/2hazSY4Ef3aB9ATXW7J5w0',
-  },
-  {
-    id: 'on-tot',
-    name: 'Tot el que vull',
-    albumArt: 'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e14',
-    spotifyUrl: 'https://open.spotify.com/artist/2hazSY4Ef3aB9ATXW7J5w0',
-  },
-  {
-    id: 'on-visc',
-    name: 'Visc',
-    albumArt: 'https://i.scdn.co/image/ab67616d0000b273c5663b43f5a2fd847c71ea8a',
-    spotifyUrl: 'https://open.spotify.com/artist/2hazSY4Ef3aB9ATXW7J5w0',
-  },
-  {
-    id: 'on-fes',
-    name: 'Fes-me ballar',
-    albumArt: 'https://i.scdn.co/image/ab67616d0000b273c5663b43f5a2fd847c71ea8a',
-    spotifyUrl: 'https://open.spotify.com/artist/2hazSY4Ef3aB9ATXW7J5w0',
-  },
-  {
-    id: 'on-ara',
-    name: 'Ara',
-    albumArt: 'https://i.scdn.co/image/ab67616d0000b273b9e6d8f3c85e4a9e456e7b3a',
-    spotifyUrl: 'https://open.spotify.com/artist/2hazSY4Ef3aB9ATXW7J5w0',
-  },
-  {
-    id: 'on-nit',
-    name: 'Nit de Lluna',
-    albumArt: 'https://i.scdn.co/image/ab67616d0000b273b9e6d8f3c85e4a9e456e7b3a',
-    spotifyUrl: 'https://open.spotify.com/artist/2hazSY4Ef3aB9ATXW7J5w0',
-  },
+  { id: 'on-nina',    name: 'La Niña',        albumArt: null, spotifyUrl: null },
+  { id: 'on-enamo',  name: 'Enamorao',        albumArt: null, spotifyUrl: null },
+  { id: 'on-quiza',  name: 'Quizá no sé amar', albumArt: null, spotifyUrl: null },
+  { id: 'on-carme',  name: 'Carmesí',         albumArt: null, spotifyUrl: null },
 ];
 
 const DEMO_USERS = [
@@ -88,14 +44,14 @@ export async function seedDemoData() {
   // Crear eventos escalonados en el tiempo (últimas 6 horas)
   const now = Date.now();
   const entries = [
-    { user: DEMO_USERS[0], track: OSCAR_NELL_TRACKS[0], ago: 5  },
-    { user: DEMO_USERS[1], track: OSCAR_NELL_TRACKS[1], ago: 20 },
-    { user: DEMO_USERS[2], track: OSCAR_NELL_TRACKS[2], ago: 45 },
-    { user: DEMO_USERS[4], track: OSCAR_NELL_TRACKS[3], ago: 70 },
-    { user: DEMO_USERS[3], track: OSCAR_NELL_TRACKS[4], ago: 95 },
-    { user: DEMO_USERS[0], track: OSCAR_NELL_TRACKS[5], ago: 130 },
-    { user: DEMO_USERS[1], track: OSCAR_NELL_TRACKS[6], ago: 180 },
-    { user: DEMO_USERS[2], track: OSCAR_NELL_TRACKS[7], ago: 240 },
+    { user: DEMO_USERS[0], track: OSCAR_NELL_TRACKS[0], ago: 5   },
+    { user: DEMO_USERS[1], track: OSCAR_NELL_TRACKS[1], ago: 20  },
+    { user: DEMO_USERS[2], track: OSCAR_NELL_TRACKS[2], ago: 45  },
+    { user: DEMO_USERS[4], track: OSCAR_NELL_TRACKS[3], ago: 70  },
+    { user: DEMO_USERS[3], track: OSCAR_NELL_TRACKS[0], ago: 95  },
+    { user: DEMO_USERS[0], track: OSCAR_NELL_TRACKS[2], ago: 130 },
+    { user: DEMO_USERS[1], track: OSCAR_NELL_TRACKS[3], ago: 180 },
+    { user: DEMO_USERS[2], track: OSCAR_NELL_TRACKS[1], ago: 240 },
     { user: DEMO_USERS[4], track: OSCAR_NELL_TRACKS[0], ago: 300 },
     { user: DEMO_USERS[3], track: OSCAR_NELL_TRACKS[2], ago: 360 },
   ];
