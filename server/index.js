@@ -20,7 +20,17 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // ── Middleware ─────────────────────────────────────────────────────────────
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: (origin, cb) => {
+    const allowed = [
+      process.env.FRONTEND_URL,
+      'http://localhost:5173',
+    ].filter(Boolean);
+    if (!origin || allowed.some(o => origin.startsWith(o)) || /\.vercel\.app$/.test(origin)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 app.use(express.json());
